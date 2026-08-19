@@ -17,7 +17,7 @@ Depends:
  isc-dhcp-relay,
  isc-dhcp-server,
  man-db,
- ntp,
+ chrony,
  radvd,
  rsyslog,
  snmpd,

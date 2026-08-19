@@ -23,7 +23,7 @@ pkg=vyatta-debian-system-config
 case "$1" in
     configure)
 	# init of daemon is controlled by Vyatta configuration
-	for init in ntp snmpd openhpid logd isc-dhcp-relay \
+	for init in chrony snmpd openhpid logd isc-dhcp-relay \
             isc-dhcp-server ipvsadm ddclient radvd hostapd
 	do
 	    update-rc.d -f ${init} remove >/dev/null
@@ -55,7 +55,7 @@ case "$1" in
 	touch /etc/environment
 
 	# Change default shell for new accounts
-	sed -i -e ':^DSHELL:s:/bin/bash:/bin/vbash:' /etc/adduser.conf
+	sed -i -e 's|^#\?DSHELL=.*|DSHELL=/bin/vbash|' /etc/adduser.conf
 
 	# Do not allow users to change full name field (controlled by Vyatta
 	# config)
